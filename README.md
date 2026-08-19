@@ -43,7 +43,7 @@ The objective was to support faster and more informed decisions across portfolio
 
 The dashboard was designed to answer the following business questions:
 
-1. How large is the outstanding portfolio, and how has it changed month by month?
+1. How large is the outstanding portfolio, and how has it changed over time?
 2. What percentage of the portfolio is defaulted or non-performing?
 3. Which loan types combine high outstanding exposure with high default rates or expected losses?
 4. Where is non-performing exposure geographically concentrated?
@@ -58,7 +58,7 @@ The dashboard was designed to answer the following business questions:
 
 The project uses a synthetic banking dataset representing a retail and SME loan portfolio.
 
-The data was structured around monthly loan account snapshots, enabling the analysis of portfolio performance over time.
+The data was structured around monthly loan account snapshots, enabling the analysis of portfolio performance and credit risk over time.
 
 Key information includes:
 
@@ -89,7 +89,7 @@ The use of monthly snapshots allows the same loan to be analysed across differen
 
 ## 🧩 Data Model
 
-The project was built using a dimensional data model.
+The project was built using a dimensional data model based on a Star Schema approach.
 
 The central fact table contains monthly loan account snapshots, including financial exposure and credit risk metrics.
 
@@ -99,19 +99,19 @@ This structure supports efficient aggregation, filtering and time-based analysis
 
 ### Main Model Components
 
-**Fact Loans**
+#### Fact Loans
 
 Contains:
 
 - Loan-level monthly snapshots
 - Outstanding balances
-- Days past due
+- Days Past Due
 - Default indicators
 - Non-performing indicators
-- Expected loss
-- Credit score information
+- Expected Loss
+- Credit Score information
 
-**Dimension Tables**
+#### Dimension Tables
 
 Supporting dimensions were used to analyse the portfolio across:
 
@@ -123,9 +123,9 @@ Supporting dimensions were used to analyse the portfolio across:
 
 ---
 
-## 📐 Key DAX Measures
+## 📐 Key DAX Measures & Calculations
 
-Several DAX measures were developed to calculate portfolio KPIs and support interactive analysis.
+Several DAX measures and calculated columns were developed to calculate portfolio KPIs and support interactive analysis.
 
 ### Total Outstanding
 
@@ -159,7 +159,7 @@ Measures the percentage of the current portfolio classified as Critical Risk.
 
 ## ⚠️ Risk Classification
 
-A transparent DAX-based risk score was created to classify loans into four risk categories:
+A transparent DAX-based risk scoring framework was created to classify individual loans into four risk categories:
 
 - 🟢 **Low Risk**
 - 🟡 **Medium Risk**
@@ -172,7 +172,9 @@ The classification considers indicators such as:
 - Default Status
 - Non-Performing Status
 
-The risk score was then converted into a business-friendly risk classification, enabling portfolio exposure to be analysed by risk level.
+The risk score was then converted into a business-friendly risk classification, allowing portfolio exposure to be analysed by risk level.
+
+This approach was designed to keep the risk methodology transparent and understandable for business stakeholders.
 
 ---
 
@@ -182,7 +184,7 @@ The risk score was then converted into a business-friendly risk classification, 
 
 Provides a high-level view of the lending portfolio and overall credit risk.
 
-Key metrics include:
+### Key KPIs
 
 - Total Portfolio
 - Total Outstanding
@@ -191,11 +193,15 @@ Key metrics include:
 - Risk Exposure %
 - Average Credit Score
 
-Key visualisations include:
+### Key Visualisations
 
 - Portfolio Evolution
 - Outstanding Balance by Loan Type
 - Default Rate by Loan Type
+
+### Business Insight
+
+Provides an executive-level snapshot of portfolio size, credit quality and risk exposure, helping management quickly identify key trends and areas requiring attention.
 
 ---
 
@@ -203,14 +209,22 @@ Key visualisations include:
 
 Focuses on understanding how the lending portfolio is structured and where exposure is concentrated.
 
-Key areas include:
+### Key KPIs
 
-- Portfolio Composition
-- Outstanding Balance Evolution
-- Exposure by Loan Type
-- Exposure by Region
+- Total Portfolio
+- Total Outstanding
 - Active Loans
 - Average Credit Score
+
+### Key Visualisations
+
+- Outstanding Balance Evolution
+- Outstanding Balance by Loan Type
+- Outstanding Balance by Region
+
+### Business Insight
+
+Analyses portfolio composition and concentration across products and regions while tracking how outstanding exposure evolves over time.
 
 ---
 
@@ -218,20 +232,22 @@ Key areas include:
 
 Monitors portfolio credit quality and delinquency performance.
 
-Key metrics include:
+### Key KPIs
 
 - Default Rate
 - Non-Performing Exposure
 - Risk Exposure %
 - Total Outstanding
 
-Key visualisations analyse:
+### Key Visualisations
 
-- Non-Performing Exposure over time
+- Non-Performing Exposure Evolution
 - Default Rate by Loan Type
 - Default Rate by Region
 
-This page helps identify areas where credit quality may be deteriorating.
+### Business Insight
+
+Monitors default and non-performing exposure across loan types and regions, helping identify areas where credit quality requires closer attention.
 
 ---
 
@@ -239,14 +255,16 @@ This page helps identify areas where credit quality may be deteriorating.
 
 Analyses customer segments to identify differences in credit quality and lending performance.
 
-Key visualisations include:
+### Key Visualisations
 
 - Average Credit Score by Customer Segment
 - Default Rate by Customer Segment
 - Expected Loss by Customer Segment
 - Average Days Past Due by Customer Segment
 
-This analysis helps identify customer profiles associated with higher risk and potential financial impact.
+### Business Insight
+
+Explores credit quality, default rates, expected loss and payment delinquency across customer segments, highlighting profiles with higher risk and potential financial impact.
 
 ---
 
@@ -254,14 +272,14 @@ This analysis helps identify customer profiles associated with higher risk and p
 
 Focuses on the most actionable areas of portfolio risk.
 
-Key KPIs include:
+### Key KPIs
 
 - Total Outstanding
 - Expected Loss
 - Critical Exposure
 - Critical Exposure %
 
-Key visualisations include:
+### Key Visualisations
 
 - Expected Loss by Loan Type
 - Portfolio Risk Distribution
@@ -275,35 +293,39 @@ The collection priorities table identifies individual loans requiring attention 
 - Days Past Due
 - Loan Type
 
+### Business Insight
+
+Identifies the most critical areas of portfolio exposure and prioritises individual loans for collections based on risk level, outstanding balance, expected loss and days past due.
+
 ---
 
-## 💡 Key Insights
+# 💡 Key Insights
 
-The dashboard highlights several important business insights:
+The dashboard highlights several important business insights.
 
 ### Mortgage exposure represents a major concentration of potential financial loss
 
-Mortgage products show significant outstanding exposure and expected loss, making them a key area for risk monitoring.
+Mortgage products represent a significant portion of outstanding exposure and expected loss, making them an important area for continued risk monitoring.
 
 ### Most portfolio exposure is classified as Low Risk
 
-The majority of the portfolio is classified as Low Risk, indicating a relatively healthy overall portfolio.
+The majority of the current portfolio is classified as Low Risk, indicating that most outstanding exposure does not fall into the highest risk categories.
 
 ### Critical exposure represents a smaller but financially important portion of the portfolio
 
-A smaller share of the portfolio is classified as Critical Risk, but these loans require immediate attention due to their potential financial impact.
+Critical Risk represents a smaller share of the overall portfolio, but these loans require closer attention because of their higher potential financial impact.
 
 ### Customer segments show different credit quality profiles
 
-The analysis highlights differences in credit scores, default rates, expected loss and delinquency across customer segments.
+Differences in credit score, default rate, expected loss and delinquency across customer segments provide additional insight into customer-level risk patterns.
 
 ### Collections prioritisation can focus resources on high-impact cases
 
-By combining Expected Loss, Outstanding Balance, Days Past Due and Risk Level, the dashboard helps identify the loans that should be prioritised for collection actions.
+Combining Expected Loss, Outstanding Balance, Days Past Due and Risk Level allows collections teams to focus their efforts on loans with the greatest potential financial impact.
 
 ---
 
-## 🎯 Business Value
+# 🎯 Business Value
 
 The final dashboard provides decision-makers with a centralised view of the lending portfolio.
 
@@ -321,7 +343,7 @@ The project demonstrates how Business Intelligence tools can transform fragmente
 
 ---
 
-## 📈 Skills Demonstrated
+# 📈 Skills Demonstrated
 
 This project demonstrates practical experience with:
 
@@ -343,31 +365,31 @@ This project demonstrates practical experience with:
 
 ---
 
-## 🖥️ Dashboard Preview
+# 🖥️ Dashboard Preview
 
-### Executive Overview
+## Executive Overview
 
-![Executive Overview](images/executive-overview.png)
+![Executive Overview](images/executive-overview.jpg)
 
-### Portfolio Composition & Exposure
+## Portfolio Composition & Exposure
 
-![Portfolio Composition](images/portfolio-composition.png)
+![Portfolio Composition & Exposure](images/portfolio-composition.jpg)
 
-### Credit Risk & Delinquency Monitor
+## Credit Risk & Delinquency Monitor
 
-![Credit Risk](images/credit-risk.png)
+![Credit Risk & Delinquency Monitor](images/credit-risk.jpg)
 
-### Customer Profile & Lending Performance
+## Customer Profile & Lending Performance
 
-![Customer Profile](images/customer-profile.png)
+![Customer Profile & Lending Performance](images/customer-profile.jpg)
 
-### Risk Prioritisation & Collections
+## Risk Prioritisation & Collections
 
-![Risk Prioritisation](images/risk-prioritisation.png)
+![Risk Prioritisation & Collections](images/risk-prioritisation.jpg)
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```text
 Banking-Credit-Risk-Portfolio-Intelligence/
@@ -381,8 +403,13 @@ Banking-Credit-Risk-Portfolio-Intelligence/
 │   └── [Source data files]
 │
 └── images/
-    ├── executive-overview.png
-    ├── portfolio-composition.png
-    ├── credit-risk.png
-    ├── customer-profile.png
-    └── risk-prioritisation.png
+    ├── executive-overview.jpg
+    ├── portfolio-composition.jpg
+    ├── credit-risk.jpg
+    ├── customer-profile.jpg
+    └── risk-prioritisation.jpg
+This project was developed as an end-to-end Business Intelligence case study combining financial domain knowledge, data modelling, DAX calculations and interactive dashboard design.
+The final solution provides a structured view of portfolio performance, credit quality, risk exposure and collections priorities.
+Beyond technical dashboard development, the main objective was to demonstrate the ability to translate business questions into data-driven analysis and actionable insights.
+The project reflects a Business Intelligence approach focused on one central question:
+How can data be transformed into meaningful insights that support better business decisions?
