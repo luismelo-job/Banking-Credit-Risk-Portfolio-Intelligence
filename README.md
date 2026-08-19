@@ -364,50 +364,8 @@ This project demonstrates practical experience with:
 - Data Storytelling
 
 ---
+Conclusion 
 
-# 🖥️ Dashboard Preview
-
-## Executive Overview
-
-![Executive Overview](images/executive-overview.jpg)
-
-## Portfolio Composition & Exposure
-
-![Portfolio Composition & Exposure](images/portfolio-composition.jpg)
-
-## Credit Risk & Delinquency Monitor
-
-![Credit Risk & Delinquency Monitor](images/credit-risk.jpg)
-
-## Customer Profile & Lending Performance
-
-![Customer Profile & Lending Performance](images/customer-profile.jpg)
-
-## Risk Prioritisation & Collections
-
-![Risk Prioritisation & Collections](images/risk-prioritisation.jpg)
-
----
-
-# 📁 Project Structure
-
-```text
-Banking-Credit-Risk-Portfolio-Intelligence/
-│
-├── README.md
-│
-├── PowerBI/
-│   └── Banking_Credit_Risk_Dashboard.pbix
-│
-├── Dataset/
-│   └── [Source data files]
-│
-└── images/
-    ├── executive-overview.jpg
-    ├── portfolio-composition.jpg
-    ├── credit-risk.jpg
-    ├── customer-profile.jpg
-    └── risk-prioritisation.jpg
 This project was developed as an end-to-end Business Intelligence case study combining financial domain knowledge, data modelling, DAX calculations and interactive dashboard design.
 The final solution provides a structured view of portfolio performance, credit quality, risk exposure and collections priorities.
 Beyond technical dashboard development, the main objective was to demonstrate the ability to translate business questions into data-driven analysis and actionable insights.
